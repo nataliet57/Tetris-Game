@@ -239,5 +239,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
-
+// game over function
+function gameOver(){
+    
+}
 })
