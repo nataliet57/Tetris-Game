@@ -176,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
     checkRotatedPosition()
     draw()
   }
-  /////////
 
   
   
