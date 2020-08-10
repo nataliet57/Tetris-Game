@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   let squares = Array.from(document.querySelectorAll('.grid div'))
-  const scoreDisplay = document.querySelector('#score')
+  const scoreDisplay = document.querySelectorAll('.score')
   const startBtn = document.querySelector('#start-button')
   const width = 10
   let nextRandom = 0
@@ -90,10 +90,33 @@ document.addEventListener('DOMContentLoaded', () => {
       moveRight()
     } else if (e.keyCode === 40) {
       moveDown()
+    }else if (e.keyCode === 32) {
+      bottom()
     }
   }
   document.addEventListener('keyup', control)
 
+  function bottom(){
+    undraw()
+    for(let i = 0; i < 99; i+=10){
+      if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
+        current.forEach(index => squares[currentPosition + index].classList.add('taken'))
+        // //start a new tetromino falling
+        // random = nextRandom
+        // nextRandom = Math.floor(Math.random() * theTetrominos.length)
+        // current = theTetrominos[random][currentRotation]
+        // currentPosition = 4
+        draw()
+        i=99
+        
+      }
+      else{
+        currentPosition +=10
+      }
+    }
+    draw()
+    freeze()
+  }
   //move down function
   function moveDown() {
     undraw()
@@ -214,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
       timerId = null
     } else {
       draw()
-      timerId = setInterval(moveDown, 1000)
+      timerId = setInterval(moveDown, 500)
       nextRandom = Math.floor(Math.random()*theTetrominos.length)
       displayShape()
     }
@@ -242,9 +265,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // game over function
 function gameOver(){
   if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
+    console.log(score)
     scoreDisplay.innerHTML='end'
+    const end = message
+
     clearInterval(timerId)    //auto-down function stops 
+    .reset()
   }
-    
+
 }
+return
 })
