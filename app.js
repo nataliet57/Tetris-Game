@@ -1,4 +1,5 @@
-// setInterval(function,1000) lets us invoke a function a number of times, aka 1000ms or 1s. We want the  const grid = document.querySelector('.grid')
+// setInterval(function,1000) lets us invoke a function a number of times, aka 1000ms or 1s. We want the  
+const grid = document.querySelector('.grid')
 
 document.addEventListener('DOMContentLoaded', () => {
   let squares = Array.from(document.querySelectorAll('.grid div'))
