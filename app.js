@@ -93,9 +93,14 @@ document.addEventListener('DOMContentLoaded', () => {
       moveDown()
     }else if (e.keyCode === 32) {
       bottom()
+    } else if (e.keyCode === 67){
+
     }
   }
   document.addEventListener('keyup', control)
+  function change(){
+    // Changes next tetromino
+  }
 
   function bottom(){
     undraw()
